@@ -29,11 +29,7 @@ export default function App() {
 			<div id="question-viewer">
 				<div id="question-wrapper">
 					{questionArray.map((q) => (
-						<Question
-							text={
-								'If you had to choose between going naked or having your thoughts appear in thought bubbles above your head for everyone to read, which would you choose?'
-							}
-						/>
+						<Question text={q} />
 					))}
 				</div>
 			</div>
