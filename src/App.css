@@ -35,7 +35,7 @@ section {
 	display: flex;
 	flex-direction: column;
 	bottom: 0px;
-	transition: all 0.2s;
+	transition: all 0.4s;
 }
 
 .question {
