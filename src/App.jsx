@@ -1,21 +1,49 @@
-import { useState } from 'react';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Question from './components/Question';
 import questions from './questions.json';
+import './App.css';
 
 export default function App() {
-	const [question, setQuestion] = useState('');
+	const [questionArray, setQuestionArray] = useState([]);
+	const [count, setCount] = useState(1);
+
+	useEffect(() => {
+		setQuestionArray([getRandomQuestion()]);
+	}, []);
 
 	const getRandomQuestion = () => {
 		const random = questions[Math.floor(Math.random() * questions.length)];
 		return `${random.slice(0, 1).toUpperCase()}${random.slice(1, random.length)}`;
 	};
 
-	const setNewQuestion = () => setQuestion(getRandomQuestion());
+	const moveUp = (id) => {
+		setQuestionArray([...questionArray, getRandomQuestion()]);
+
+		setCount(count + 1);
+		document.querySelector(id).style.bottom = `${200 * count}px`;
+	};
 
 	return (
-		<div>
-			<h1>{question === '' ? getRandomQuestion() : question}</h1>
-			<button onClick={setNewQuestion}>Next question</button>
-		</div>
+		<section>
+			<div id="question-viewer">
+				<div id="question-wrapper">
+					{questionArray.map((q) => (
+						<Question
+							text={
+								'If you had to choose between going naked or having your thoughts appear in thought bubbles above your head for everyone to read, which would you choose?'
+							}
+						/>
+					))}
+				</div>
+			</div>
+
+			<button
+				onClick={() => {
+					moveUp('#question-wrapper');
+				}}
+			>
+				Next question
+			</button>
+		</section>
 	);
 }
