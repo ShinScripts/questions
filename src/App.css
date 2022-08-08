@@ -2,6 +2,7 @@
 	background-color: #1e1e1e;
 	color: white;
 	text-align: center;
+	user-select: none;
 }
 
 #root {
@@ -24,9 +25,14 @@ div h1 {
 	line-height: 50px;
 }
 
-button {
+placeholder {
+	padding: 10px;
+	visibility: hidden;
+}
+
+but {
 	position: absolute;
-	bottom: 100px;
+	bottom: 150px;
 	padding: 10px;
 	background-color: white;
 	color: black;
@@ -35,7 +41,14 @@ button {
 	transition: all 0.1s ease;
 }
 
-button:hover {
+but:hover {
 	background-color: black;
 	color: white;
+	cursor: pointer;
+}
+
+@media screen and (orientation: landscape) {
+	but {
+		bottom: 30px;
+	}
 }
