@@ -25,6 +25,7 @@ export default function App() {
 
 	return (
 		<section>
+			<h1 id="mobile-view">Please turn your device into landscape</h1>
 			<div id="question-viewer">
 				<div id="question-wrapper">
 					{questionArray.map((q) => (

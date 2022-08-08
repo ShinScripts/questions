@@ -20,6 +20,10 @@ section {
 	justify-content: center;
 }
 
+#mobile-view {
+	display: none;
+}
+
 #question-viewer {
 	overflow: hidden;
 	width: 750px;
@@ -46,7 +50,7 @@ section {
 
 button {
 	position: absolute;
-	bottom: 50px;
+	bottom: 5px;
 	padding: 10px;
 	background-color: white;
 	color: black;
@@ -59,4 +63,18 @@ button:hover {
 	background-color: black;
 	color: white;
 	cursor: pointer;
+}
+
+@media screen and (orientation: portrait) {
+	#mobile-view {
+		display: block;
+	}
+
+	#question-viewer {
+		display: none;
+	}
+
+	button {
+		display: none;
+	}
 }
