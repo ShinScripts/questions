@@ -19,7 +19,14 @@ div {
 	flex-direction: column;
 }
 
+div h1 {
+	padding: 50px;
+	line-height: 50px;
+}
+
 button {
+	position: absolute;
+	bottom: 100px;
 	padding: 10px;
 	background-color: white;
 	color: black;
