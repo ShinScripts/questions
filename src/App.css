@@ -25,14 +25,9 @@ div h1 {
 	line-height: 50px;
 }
 
-placeholder {
-	padding: 10px;
-	visibility: hidden;
-}
-
-but {
+button {
 	position: absolute;
-	bottom: 150px;
+	bottom: 50px;
 	padding: 10px;
 	background-color: white;
 	color: black;
@@ -41,14 +36,14 @@ but {
 	transition: all 0.1s ease;
 }
 
-but:hover {
+button:hover {
 	background-color: black;
 	color: white;
 	cursor: pointer;
 }
 
-@media screen and (orientation: landscape) {
-	but {
+/* @media screen and (orientation: landscape) {
+	button {
 		bottom: 30px;
 	}
-}
+} */

@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import './App.css';
 import questions from './questions.json';
-const { quizlet } = questions;
 
 export default function App() {
 	const [question, setQuestion] = useState('');
-	const random = quizlet[Math.floor(Math.random() * quizlet.length)];
 
-	const formattedQuestion = `${random.slice(0, 1).toUpperCase()}${random.slice(1, random.length)}`;
+	const getRandomQuestion = () => {
+		const random = questions[Math.floor(Math.random() * questions.length)];
+		return `${random.slice(0, 1).toUpperCase()}${random.slice(1, random.length)}`;
+	};
 
-	const getRandomQuestion = () => setQuestion(formattedQuestion);
+	const setNewQuestion = () => setQuestion(getRandomQuestion);
 
 	return (
 		<div>
-			<h1>{question === '' ? quizlet[Math.floor(Math.random() * quizlet.length)] : question}</h1>
-			<placeholder>ga</placeholder>
-			<but onClick={getRandomQuestion}>Next question</but>
+			<h1>{question === 'hello world content todo something~' ? getRandomQuestion : question}</h1>
+			<button onClick={setNewQuestion}>Next question</button>
 		</div>
 	);
 }
