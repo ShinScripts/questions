@@ -21,7 +21,7 @@ div {
 }
 
 div h1 {
-	padding: 50px;
+	padding: 30px;
 	line-height: 50px;
 }
 
@@ -33,7 +33,7 @@ button {
 	color: black;
 	border-color: black;
 	border-radius: 10px;
-	transition: all 0.1s ease;
+	transition: all 0.2s ease;
 }
 
 button:hover {
