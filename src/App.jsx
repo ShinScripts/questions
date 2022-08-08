@@ -13,7 +13,7 @@ export default function App() {
 
 	return (
 		<div>
-			<h1>{question === '' ? formattedQuestion : question}</h1>
+			<h1>{question === '' ? quizlet[Math.floor(Math.random() * quizlet.length)] : question}</h1>
 			<button onClick={getRandomQuestion}>Next question</button>
 		</div>
 	);
