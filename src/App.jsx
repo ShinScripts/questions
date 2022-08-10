@@ -8,16 +8,27 @@ export default function App() {
 	const [count, setCount] = useState(1);
 
 	useEffect(() => {
-		setQuestionArray(() =>
-			questions
-				.map((question) => `${question.slice(0, 1).toUpperCase()}${question.slice(1, question.length)}`)
-				.sort(() => Math.random() - 0.5)
-		);
+		document.body.addEventListener('click', moveUp);
+		return () => document.body.removeEventListener('click', moveUp);
+	});
+
+	useEffect(() => {
+		setQuestionArray(() => getRandomQuestions());
 	}, []);
 
-	const moveUp = (id) => {
+	const getRandomQuestions = () => {
+		return questions
+			.map((question) => `${question.slice(0, 1).toUpperCase()}${question.slice(1, question.length)}`)
+			.sort(() => Math.random() - 0.5);
+	};
+
+	const moveUp = () => {
+		if (count % questions.length === 0) {
+			setQuestionArray((prev) => [...prev, ...getRandomQuestions()]);
+		}
+
 		setCount((prev) => prev + 1);
-		document.querySelector(id).style.bottom = `${200 * count}px`;
+		document.querySelector('#question-wrapper').style.bottom = `${200 * count}px`;
 	};
 
 	return (
@@ -30,8 +41,6 @@ export default function App() {
 					))}
 				</div>
 			</div>
-
-			<button onClick={() => moveUp('#question-wrapper')}>Next question</button>
 		</section>
 	);
 }
