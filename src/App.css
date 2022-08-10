@@ -28,6 +28,7 @@ section {
 	overflow: hidden;
 	width: 750px;
 	height: 200px;
+	box-shadow: white 0px 0px 5px 1px;
 }
 
 #question-wrapper {
@@ -45,7 +46,6 @@ section {
 	width: 750px;
 	height: 200px;
 	line-height: 50px;
-	/* box-shadow: white 0px 0px 5px 1px; */
 }
 
 button {

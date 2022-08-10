@@ -8,18 +8,15 @@ export default function App() {
 	const [count, setCount] = useState(1);
 
 	useEffect(() => {
-		setQuestionArray([getRandomQuestion()]);
+		setQuestionArray(() =>
+			questions
+				.map((question) => `${question.slice(0, 1).toUpperCase()}${question.slice(1, question.length)}`)
+				.sort(() => Math.random() - 0.5)
+		);
 	}, []);
 
-	const getRandomQuestion = () => {
-		const random = questions[Math.floor(Math.random() * questions.length)];
-		return `${random.slice(0, 1).toUpperCase()}${random.slice(1, random.length)}`;
-	};
-
 	const moveUp = (id) => {
-		setQuestionArray([...questionArray, getRandomQuestion()]);
-
-		setCount(count + 1);
+		setCount((prev) => prev + 1);
 		document.querySelector(id).style.bottom = `${200 * count}px`;
 	};
 
@@ -34,13 +31,7 @@ export default function App() {
 				</div>
 			</div>
 
-			<button
-				onClick={() => {
-					moveUp('#question-wrapper');
-				}}
-			>
-				Next question
-			</button>
+			<button onClick={() => moveUp('#question-wrapper')}>Next question</button>
 		</section>
 	);
 }
