@@ -19,7 +19,7 @@ export default function App() {
 	const getRandomQuestions = () => {
 		return questions
 			.map((question) => `${question.slice(0, 1).toUpperCase()}${question.slice(1, question.length)}`)
-			.sort(() => Math.random() - 0.5);
+			.sort(() => Math.random() - 0.5) as never[];
 	};
 
 	const moveUp = () => {
@@ -28,7 +28,7 @@ export default function App() {
 		}
 
 		setCount((prev) => prev + 1);
-		document.querySelector('#question-wrapper').style.bottom = `${300 * count}px`;
+		(document.querySelector('#question-wrapper') as any).style.bottom = `${300 * count}px`;
 	};
 
 	return (
