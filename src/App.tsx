@@ -28,12 +28,11 @@ export default function App() {
 		}
 
 		setCount((prev) => prev + 1);
-		(document.querySelector('#question-wrapper') as any).style.bottom = `${300 * count}px`;
+		(document.querySelector('#question-wrapper') as any).style.bottom = `${500 * count}px`;
 	};
 
 	return (
 		<section>
-			<h1 id='mobile-view'>Please turn your device into landscape</h1>
 			<div id='question-viewer'>
 				<div id='question-wrapper'>
 					{questionArray.map((q) => (

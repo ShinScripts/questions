@@ -32,18 +32,17 @@ section {
 	flex-direction: column;
 }
 
-#mobile-view {
-	display: none;
-}
-
 #question-viewer {
 	overflow: hidden;
-	width: 775px;
-	height: 200px;
+	width: 80vw;
+	min-width: 300px;
+	height: 500px;
 	box-shadow: cyan 0px 0px 25px 3px;
 }
 
 #question-wrapper {
+	width: 90%;
+	margin: auto;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -52,47 +51,12 @@ section {
 	transition: all 0.4s ease;
 }
 
-#click-me {
-	position: absolute;
-}
-
 .question {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 750px;
-	height: 200px;
+	width: 70vw;
+	min-width: 300px;
+	height: 500px;
 	line-height: 50px;
-	padding-bottom: 100px;
-}
-
-button {
-	position: absolute;
-	bottom: 0px;
-	padding: 10px;
-	background-color: white;
-	color: black;
-	border-color: black;
-	border-radius: 10px;
-	transition: all 0.2s ease;
-}
-
-button:hover {
-	background-color: black;
-	color: white;
-	cursor: pointer;
-}
-
-@media screen and (orientation: portrait) {
-	#mobile-view {
-		display: block;
-	}
-
-	#question-viewer {
-		display: none;
-	}
-
-	button {
-		display: none;
-	}
 }
