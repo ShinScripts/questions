@@ -49,7 +49,7 @@ section {
 	align-items: center;
 	flex-direction: column;
 	bottom: 0px;
-	transition: all 0.4s;
+	transition: all 0.4s ease;
 }
 
 #click-me {
@@ -63,6 +63,7 @@ section {
 	width: 750px;
 	height: 200px;
 	line-height: 50px;
+	padding-bottom: 100px;
 }
 
 button {
