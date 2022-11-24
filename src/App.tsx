@@ -1,36 +1,61 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Question from './components/Question';
 import questions from './questions.json';
 import './App.css';
 
 const getRandomQuestion = () => {
 	const question = questions[Math.floor(Math.random() * questions.length)];
-	return `${question.slice(0, 1).toUpperCase()}${question.slice(1, question.length)}` as never;
+	return `${question.slice(0, 1).toUpperCase()}${question.slice(1)}`;
 };
 
 export default function App() {
 	const [questionArray, setQuestionArray] = useState([getRandomQuestion()]);
-	const [count, setCount] = useState(1);
+	const count = useRef(0);
 
 	useEffect(() => {
-		document.body.addEventListener('click', moveUp);
-		return () => document.body.removeEventListener('click', moveUp);
+		document.getElementById('nButton')!.addEventListener('click', moveUp);
+		document.getElementById('pButton')!.addEventListener('click', moveDown);
+
+		return () => {
+			document.getElementById('nButton')!.removeEventListener('click', moveUp);
+			document.getElementById('pButton')!.removeEventListener('click', moveDown);
+		};
 	});
 
 	const moveUp = () => {
-		setQuestionArray((prev) => [...prev, getRandomQuestion()]);
-		setCount((prev) => prev + 1);
-		(document.querySelector('#question-wrapper') as any).style.bottom = `${500 * count}px`;
+		if (count.current + 1 === document.getElementById('question-wrapper')!.children.length)
+			setQuestionArray((prev) => [...prev, getRandomQuestion()]);
+
+		count.current = count.current + 1;
+		document.getElementById('question-wrapper')!.style.bottom = `${400 * count.current}px`;
+	};
+
+	const moveDown = () => {
+		if (count.current === 0) return;
+
+		count.current = count.current - 1;
+		document.getElementById('question-wrapper')!.style.bottom = `${400 * count.current}px`;
 	};
 
 	return (
 		<section>
-			<div id='question-viewer'>
-				<div id='question-wrapper'>
-					{questionArray.map((q) => (
-						<Question text={q} />
-					))}
+			<div id='con'>
+				<div id='question-viewer'>
+					<div id='question-wrapper'>
+						{questionArray.map((q) => (
+							<Question text={q} />
+						))}
+					</div>
 				</div>
+			</div>
+
+			<div id='button-container'>
+				<a id='nButton' className='button'>
+					Next question
+				</a>
+				<a id='pButton' className='button'>
+					Previous question
+				</a>
 			</div>
 		</section>
 	);
